@@ -11,10 +11,14 @@ function GenerateTable()
             $td.appendChild($img);
             $tr.appendChild($td);
         }
-        table.appendChild($tr);
+        gameTable.appendChild($tr);
     }
 }
 
-const table = document.querySelector(".table-container table");
+function StartGame()
+{
+    gameContainer.style.display = "flex";
+    menuContainer.style.display = "none";
+}
 
 GenerateTable();

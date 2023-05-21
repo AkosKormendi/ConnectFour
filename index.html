@@ -13,12 +13,12 @@
         <div class="header-container">
             <h1>Connect Four</h1>
             <div class="navigation-container">
-                <button id="start-page">Main-page</button>
-                <button id="description">Description</button>
+                <button id="menu-button" onclick="GoToMain()">Main-page</button>
+                <button id="description-button">Description</button>
             </div>
         </div>
-        <div class="start-page-container" hidden>
-
+        <div class="menu-container" style="display: none">
+            <button id="start-game-button" onclick="StartGame()">Start Game</button>
         </div>
         <div class="game-container">
             <div class="table-container">
@@ -28,6 +28,7 @@
         </div>
     </div>
 </body>
+<script src="javascript/globals.js"></script>
 <script src="javascript/page.js"></script>
 <script src="javascript/table.js"></script>
 </html>

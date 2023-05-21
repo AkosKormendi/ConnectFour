@@ -7,7 +7,7 @@ body {
     min-height: 500px;
 }
 
-.start-page-container, .game-container {
+.menu-container, .game-container {
     min-width: 400px;
     display: flex;
     justify-content: center;
