@@ -1,0 +1,15 @@
+.table-container td img {
+    width: 8vh;
+    height: 8vh;
+}
+
+.table-container {
+    background-color: #000db4;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.table-container table {
+    border-collapse: collapse;
+    background-color: #000db4;
+}
