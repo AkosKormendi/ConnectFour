@@ -13,3 +13,10 @@
     border-collapse: collapse;
     background-color: #000db4;
 }
+
+@media screen and (max-width: 375px) {
+    .table-container td img {
+        width: 6vh;
+        height: 6vh;
+    }
+}

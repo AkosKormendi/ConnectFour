@@ -1,16 +1,29 @@
 body {
     margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .site-container {
     min-width: 400px;
     min-height: 500px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .menu-container, .game-container {
     min-width: 400px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.players-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
 }
 
 .header-container {
@@ -23,4 +36,14 @@ body {
     flex-wrap: wrap;
     align-content: center;
     flex-direction: row;
+}
+
+@media screen and (max-width: 425px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    .players-container {
+        flex-direction: column;
+    }
 }
