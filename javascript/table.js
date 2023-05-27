@@ -1,5 +1,10 @@
+import { Board } from "./board.js";
+
+
+//  TODO: create a gamestate that encompasses these variables
 let player1 = "";
 let player2 = "";
+let gameBoard = new Board();
 
 function GenerateTable()
 {
@@ -10,7 +15,7 @@ function GenerateTable()
         {
             let td = document.createElement("td");
             let img = document.createElement("img");
-            img.src = "images/ConnectFourCell.svg";
+            img.src = gameBoard.board[i,j].image;
             td.appendChild(img);
             tr.appendChild(td);
         }
