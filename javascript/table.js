@@ -1,3 +1,6 @@
+let player1 = "";
+let player2 = "";
+
 function GenerateTable()
 {
     for(let i = 0; i < 6; i++)
@@ -19,6 +22,12 @@ function StartGame()
 {
     gameContainer.style.display = "flex";
     menuContainer.style.display = "none";
+
+    player1 = player1Name.value;
+    player2 = player2Name.value;
+
+    console.log(player1);
+    console.log(player2);
 }
 
 GenerateTable();
