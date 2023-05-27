@@ -5,7 +5,7 @@ import { Board } from "./board.js";
 let player1 = "";
 let player2 = "";
 let gameBoard = new Board();
-
+let round = 1;
 
 gameStartButton.addEventListener("click", () => StartGame());
 
@@ -24,7 +24,17 @@ function GenerateTable()
             img.addEventListener("click", (ev) => {
 
                 let column = GetColumn(ev.target.parentNode);
-                gameBoard.PlaceTile(column, "images/ConnectFourRedCell.svg");
+
+                if(round == 1)
+                {
+                    gameBoard.PlaceTile(column, "images/ConnectFourRedCell.svg");
+                    round = 2;
+                } 
+                else 
+                {
+                    gameBoard.PlaceTile(column, "images/ConnectFourYellowCell.svg");
+                    round = 1;
+                }
 
                 GenerateTable();
             });
@@ -44,6 +54,10 @@ function StartGame()
     player1 = player1Name.value;
     player2 = player2Name.value;
 
+    gameBoard = new Board();
+
+    GenerateTable();
+
     console.log(player1);
     console.log(player2);
 }
@@ -51,5 +65,3 @@ function StartGame()
 function GetColumn(td) {
     return td.cellIndex;
 }
-
-GenerateTable();
