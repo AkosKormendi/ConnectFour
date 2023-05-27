@@ -6,3 +6,4 @@ const player2Name = document.querySelector(".player-name-container:nth-child(2) 
 
 //  Elements
 const gameTable = document.querySelector(".table-container table");
+const gameStartButton = document.querySelector("#start-game-button");
