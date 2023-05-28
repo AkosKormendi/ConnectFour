@@ -20,13 +20,6 @@ export class Board {
         {
             return;
         }
-        
-        //  Checks if the bottom cell is free, if so, fills it up
-        if(this.board[5][index].image === "images/ConnectFourCell.svg")
-        {
-            this.board[5][index].image = img; 
-            return;
-        }
 
         //  Checks from the bottom up which tile is free
         for(let i = 5; i >= 0; i--)
