@@ -6,6 +6,7 @@ let player1 = "";
 let player2 = "";
 let gameBoard = new Board();
 let round = 1;
+let winner;
 
 gameStartButton.addEventListener("click", () => StartGame());
 
@@ -23,19 +24,24 @@ function GenerateTable()
             let img = document.createElement("img");
             img.addEventListener("click", (ev) => {
 
+                if(winner != null)
+                {
+                    return;
+                }
+
                 let column = GetColumn(ev.target.parentNode);
 
                 if(round == 1)
                 {
-                    gameBoard.PlaceTile(column, "images/ConnectFourRedCell.svg");
+                    gameBoard.PlaceTile(column, "images/ConnectFourRedCell.svg", player1);
                     round = 2;
                 } 
                 else 
                 {
-                    gameBoard.PlaceTile(column, "images/ConnectFourYellowCell.svg");
+                    gameBoard.PlaceTile(column, "images/ConnectFourYellowCell.svg", player2);
                     round = 1;
                 }
-
+                
                 GenerateTable();
             });
             img.src = gameBoard.board[i][j].image;
@@ -43,6 +49,13 @@ function GenerateTable()
             tr.appendChild(td);
         }
         gameTable.appendChild(tr);
+    }
+
+    winner = gameBoard.CheckForWin();
+
+    if(winner != null)
+    {
+        console.log(winner);
     }
 }
 
@@ -53,6 +66,8 @@ function StartGame()
 
     player1 = player1Name.value;
     player2 = player2Name.value;
+
+    winner = null;
 
     gameBoard = new Board();
 
