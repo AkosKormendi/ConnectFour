@@ -1,12 +1,8 @@
-import { Board } from "./board.js";
-
+import { GameState } from "./classes/state.js";
 
 //  TODO: create a gamestate that encompasses these variables
-let player1 = "";
-let player2 = "";
-let gameBoard = new Board();
-let round = 1;
-let winner;
+
+let gameState;
 
 gameStartButton.addEventListener("click", () => StartGame());
 
@@ -24,38 +20,38 @@ function GenerateTable()
             let img = document.createElement("img");
             img.addEventListener("click", (ev) => {
 
-                if(winner != null)
+                if(gameState.Winner != null)
                 {
                     return;
                 }
 
                 let column = GetColumn(ev.target.parentNode);
 
-                if(round == 1)
+                if(gameState.Round == 1)
                 {
-                    gameBoard.PlaceTile(column, "images/ConnectFourRedCell.svg", player1);
-                    round = 2;
+                    gameState.Board.PlaceTile(column, gameState.Player1);
+                    gameState.Round = 2;
                 } 
                 else 
                 {
-                    gameBoard.PlaceTile(column, "images/ConnectFourYellowCell.svg", player2);
-                    round = 1;
+                    gameState.Board.PlaceTile(column, gameState.Player2);
+                    gameState.Round = 1;
                 }
                 
                 GenerateTable();
             });
-            img.src = gameBoard.board[i][j].image;
+            img.src = gameState.Board.Board[i][j].image;
             td.appendChild(img);
             tr.appendChild(td);
         }
         gameTable.appendChild(tr);
     }
 
-    winner = gameBoard.CheckForWin();
+    gameState.Winner = gameState.Board.CheckForWin();
 
-    if(winner != null)
+    if(gameState.Winner != null)
     {
-        console.log(winner);
+        console.log(gameState.Winner);
     }
 }
 
@@ -64,17 +60,9 @@ function StartGame()
     gameContainer.style.display = "flex";
     menuContainer.style.display = "none";
 
-    player1 = player1Name.value;
-    player2 = player2Name.value;
-
-    winner = null;
-
-    gameBoard = new Board();
+    gameState = new GameState(player1Name.value,player2Name.value,"images/ConnectFourRedCell.svg", "images/ConnectFourYellowCell.svg");
 
     GenerateTable();
-
-    console.log(player1);
-    console.log(player2);
 }
 
 function GetColumn(td) {
