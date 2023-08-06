@@ -18,7 +18,7 @@ export class Board {
         //  Checks if the top cell is filled
         if(this.Board[0][index].image !== "images/ConnectFourCell.svg")
         {
-            return;
+            return false;
         }
 
         //  Checks from the bottom up which tile is free
@@ -28,9 +28,11 @@ export class Board {
             {
                 this.Board[i][index].image = player.Image;
                 this.Board[i][index].player = player.Name;
-                break;
+                return true;
             }
         }
+
+        return false;
     }
 
     CheckForWin()

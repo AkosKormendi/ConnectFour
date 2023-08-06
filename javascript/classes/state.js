@@ -11,4 +11,42 @@ export class GameState {
         this.IsWon = false;
         this.Winner = null;
     }
+
+    PlaceTile(ev)
+    {
+        if(this.Winner != null)
+        {
+            return false;
+        }
+
+        let column = this.#getColumn(ev.target.parentNode);
+
+        if(this.Round == 1)
+        {
+            let isPlaced = this.Board.PlaceTile(column, this.Player1);
+
+            if(isPlaced)
+            {
+                this.Round = 2;
+                return true;
+            }
+        } 
+        else 
+        {
+            let isPlaced = this.Board.PlaceTile(column, this.Player2);
+
+            if(isPlaced)
+            {
+                this.Round = 1;
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    
+    #getColumn(td) {
+        return td.cellIndex;
+    }
 }

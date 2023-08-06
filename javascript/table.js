@@ -20,25 +20,13 @@ function GenerateTable()
             let img = document.createElement("img");
             img.addEventListener("click", (ev) => {
 
-                if(gameState.Winner != null)
-                {
-                    return;
-                }
+                let isTilePlaced = gameState.PlaceTile(ev);
 
-                let column = GetColumn(ev.target.parentNode);
-
-                if(gameState.Round == 1)
+                if(isTilePlaced)
                 {
-                    gameState.Board.PlaceTile(column, gameState.Player1);
-                    gameState.Round = 2;
-                } 
-                else 
-                {
-                    gameState.Board.PlaceTile(column, gameState.Player2);
-                    gameState.Round = 1;
+                    GenerateTable();
                 }
                 
-                GenerateTable();
             });
             img.src = gameState.Board.Board[i][j].image;
             td.appendChild(img);
@@ -63,8 +51,4 @@ function StartGame()
     gameState = new GameState(player1Name.value,player2Name.value,"images/ConnectFourRedCell.svg", "images/ConnectFourYellowCell.svg");
 
     GenerateTable();
-}
-
-function GetColumn(td) {
-    return td.cellIndex;
 }
